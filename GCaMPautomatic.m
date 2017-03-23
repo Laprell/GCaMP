@@ -30,7 +30,6 @@ Improvements that can be made:
 % directory = uigetdir('L:\DATA\');
 [folders_with_overview, num_folders, directory] = openfolders('overview');
 cd (directory); %change current directory
-n = 'this is a test for github'
 
 %% all variables. ROI_ill = dendrite that was illuminated. ROI_controll = dendrite that was not illuminated.
 % all_exp_num = either the acutal experiment number. For the overview
