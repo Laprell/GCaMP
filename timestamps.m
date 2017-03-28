@@ -23,8 +23,6 @@ for j = 1: length_data
     delta = [delta, diff];
 end
 
-exp_num = delta;
+time = delta;
 
 %%
-all_exp_num{1, num_folders}= [];
-all_exp_num {i} = exp_num; 

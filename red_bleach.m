@@ -11,8 +11,9 @@
 %%
 %find all folders in directory that contain the word 'zoom' for the bleach
 %analysis
-folderswithzoom
-
+%folderswithzoom
+[folders_with_zoom, num_folders, directory] = openfolders('zoom');
+cd (directory);
 %% save all bleach.txt in one cell array.
 bleach_all_experiments{1, num_folders} = [];
 %% store exponential fit data in a matrix
@@ -20,14 +21,14 @@ exp_data_1 = [];
 exp_data_2 = [];
 
 %% check if a bleach.txt file exists in the current directory. If file does not exists, move to next directory.
-for i = 1:num_folders; 
-    path = folders_with_zoom {1,i}; 
+for k = 1:num_folders; 
+    path = folders_with_zoom {1,k}; 
        if exist([path, '\bleach.txt'], 'file');
         %load_file_number; %calls the function for loading the exact experiment number
         bleach_load_data; % pulls the first 300 data points from bleach.txt
         exp_fit2; %exponential fit of the data
         % Now loop through all results of the day and save in one cell array.
-        bleach_all {i} = bleach;
+        bleach_all {k} = bleach;
         %% exponential fit of the first 300 data points
         %% Make a beautiful graph from the results and save the figures to the respective folders. Make this a function to call in the if-loop above.
         %change path into pathname to plot on top of the figure
@@ -36,13 +37,13 @@ for i = 1:num_folders;
         %
         %make figure without displaying it.
         figure('visible', 'off')
-        %figure
+        figure
         plot (f2, (1:1:(length(bleach))),bleach)
         xlabel('number of frames'), legend('bleach','Location','northwest')
         ax1 = gca;
         ax1.YLim =[0 1.1];
         % data exponential fit
-        exp_fit = num2str(exp_data_1{1,i});
+        exp_fit = num2str(exp_data_1{1,k});
         text(125,0.2,exp_fit);
         %bleach max (first three data points)
         avg_bleach = num2str(avg_bleach);
@@ -56,11 +57,7 @@ for i = 1:num_folders;
       end
   
 % make sure all files were analyzed.
-    if i == num_folders
-        analyzed_files = length (bleach_all);
-        X = ['You''re done. No further files to analyze in this directory! You analyzed ',num2str(analyzed_files),' files out of ' num2str(i) ' files'];
-        disp (X)
-    end
+    are_you_done
 end
 
 
