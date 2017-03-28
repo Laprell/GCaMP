@@ -4,6 +4,6 @@ names = dir ([path, '\*.tif']);
 name = {names(1:end).name}.';
 r=strrep(name,'LL','');
 r=strrep(r,'.tif','');
-exp_num=[cellfun(@str2num,r)];
+exp_num=cellfun(@str2num,r);
 
 %import the data into raw_data from Fiji
