@@ -46,7 +46,7 @@ for k = 1:num_folders;
         load_raw_data % loads the raw data
         timestamps % reads in the timestamps of the individual files
         addtime_zoom_experiments % adds time to the file timestamps, because every file consists of 50 frames, which should be plot individually
-        [ROI_ill_baselinecorrected] = correctbaselinefn(5, ROI_ill, ROI_background) % calls the function for baseline subtraction
+        [ROI_ill_baselinecorrected] = correctbaselinefn(5, ROI_ill, ROI_background); % calls the function for baseline subtraction
         % Now loop through all results of the day and save in one cell array.
         ROI_ill_all {k} = ROI_ill_baselinecorrected;
         all_exp_time {:,k} = exp_num; % add all timestamps to a cell array to use for overview plot later
