@@ -22,7 +22,6 @@ startRow = 2;
 
 %% Format string for each line of text:
 formatSpec = '%f%f%f%f%f%f%f%f%f%f%f%f%f%[^\n\r]';
-
 %% Open the text file.
 fileID = fopen(filename,'r');
 
@@ -36,9 +35,20 @@ fclose(fileID);
 %% Post processing for unimportable data.
 
 %% Allocate imported array to column variable names
-ROI_ill = dataArray{:, 3};
-ROI_control = dataArray{:, 7};
-ROI_background = dataArray{:, 11};
+%in the experiments with overview there is one more ROI (i.e. the control
+%dendrite), whereas the zoom in does not have this control. Therefore, the
+%zoom in experiments have no data in the column for the control dendrite.
+%By knowing this, we can distinguish the load functions.
 
+if ~isnan (dataArray{1,11})
+    ROI_ill = dataArray{:, 3};
+    ROI_control = dataArray{:, 7};
+    ROI_background = dataArray{:, 11};
+end
+
+if isnan (dataArray{1,11})
+    ROI_ill = dataArray{:, 3};
+    ROI_background = dataArray{:, 7};
+end
 %% Clear temporary variables
-clearvars filename delimiter startRow formatSpec fileID dataArray ans;
+clearvars filename delimiter startRow formatSpec fileID %dataArray ans;

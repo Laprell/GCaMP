@@ -45,8 +45,8 @@ ax = gca; % get axis handle
 
 %%
 % adjust both axis to the first (or second) 
-% xlim = ax1.XLim;
-% ylim = ax.YLim;
-% 
-% ax.XLim = xlim;
-% ax1.YLim = ylim;
+xlim = ax1.XLim;
+ylim = ax.YLim;
+
+ax.XLim = xlim;
+ax1.YLim = ylim;

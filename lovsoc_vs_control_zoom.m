@@ -19,7 +19,7 @@ subplot (2,1,1)
 
 %for j = [1 2 7 8] % all control experiments; this needs to be adjusted depending on the experiment order
 for j = find(~folders_LOVSoc)
-    plot (all_exp_num{1,j}, ROI_ill_all{1,j}, 'marker', '.', 'color', 'r')
+    plot (all_exp_time{1,j}, ROI_ill_all{1,j}, 'marker', '.', 'color', 'r')
     hold on
 end
 title ('ctrl-mKate2')
@@ -30,7 +30,7 @@ subplot (2,1,2) % with LOVSoc
 
 %for j = 3:6 % all LOVSoc experiments; this needs to be adjusted depending on the experiment order
 for j = find(folders_LOVSoc)
-    plot (all_exp_num{1,j}, ROI_ill_all{1,j}, 'marker', '.', 'color', 'r')
+    plot (all_exp_time{1,j}, ROI_ill_all{1,j}, 'marker', '.', 'color', 'r')
     hold on
 end
 title ('LOVSoc-mch')
@@ -39,8 +39,8 @@ ax = gca; % get axis handle
 
 %%
 % adjust both axis to the first (or second) 
-% xlim = ax1.XLim;
-% ylim = ax.YLim;
-% 
-% ax.XLim = xlim;
-% ax1.YLim = ylim;
+xlim = ax1.XLim;
+ylim = ax.YLim;
+
+ax.XLim = xlim;
+ax1.YLim = ylim;

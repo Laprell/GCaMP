@@ -3,6 +3,8 @@
 % Version: 0.1
 % at Thomas Oertner Lab, ZMNH, University of Hamburg, UKE
 % 
+% [ROI_ill_baselinecorrected,ROI_control_baselinecorrected] = correctbaselinefn(number_to_average, ROI_ill, ROI_background, ROI_control);
+%
 % This script subtracts the baseline from the subsequent trials. x is the
 % number of images taken for the average subtraction and should be changed
 % according to the experiment.
