@@ -10,7 +10,7 @@
 % according to the experiment.
 
 %%
-function [ROI_ill_baselinecorrected,ROI_control_baselinecorrected] = correctbaselinefn(number_to_average, ROI_ill, ROI_background, ROI_control);
+function [ROI_ill_baselinecorrected,ROI_control_baselinecorrected] = correctbaselinefn(number_to_average, ROI_ill, ROI_background, ROI_control)
 %x=5 %number of images used for the baseline
 
 %subtract the background trance from ROI_ill and ROI_control
